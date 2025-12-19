@@ -10,14 +10,8 @@ const serverSchema = new mongoose.Schema({
   createdAt: { type: Date, default: Date.now }
 });
 
-// User Schema
-const userSchema = new mongoose.Schema({
-  username: { type: String, required: true, unique: true },
-  email: { type: String, required: true, unique: true },
-  password: { type: String, required: true },
-  role: { type: String, enum: ['admin', 'user'], default: 'user' },
-  createdAt: { type: Date, default: Date.now }
-});
+// User Schema removed - imported from User.js
+// const userSchema = ...
 
 // Alert Schema
 const alertSchema = new mongoose.Schema({
@@ -39,6 +33,6 @@ const metricsSchema = new mongoose.Schema({
 });
 
 export const Server = mongoose.model('Server', serverSchema);
-export const User = mongoose.model('User', userSchema);
+// export const User = mongoose.model('User', userSchema);
 export const Alert = mongoose.model('Alert', alertSchema);
 export const Metrics = mongoose.model('Metrics', metricsSchema);

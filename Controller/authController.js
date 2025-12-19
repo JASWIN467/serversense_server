@@ -20,6 +20,7 @@ export const register = async (req, res) => {
         // Create user
         const newUser = new User({
             username,
+            email, // Add email
             password: hashedPassword,
             role: 'user' // Default role
         });
@@ -81,6 +82,7 @@ export const seedAdmin = async () => {
 
             const adminUser = new User({
                 username: "admin",
+                email: "admin@serversense.com",
                 password: hashedPassword,
                 role: "admin"
             });

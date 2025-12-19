@@ -1,4 +1,5 @@
-import { Server, User, Alert, Metrics } from "../Model/todoModel.js";
+import { Server, Alert, Metrics } from "../Model/todoModel.js";
+import User from "../Model/User.js";
 import bcrypt from 'bcryptjs';
 import jwt from 'jsonwebtoken';
 
