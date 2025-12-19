@@ -139,3 +139,36 @@ export const getUserProfile = async (req, res) => {
     res.status(500).json({ message: err.message });
   }
 };
+
+export const updateUser = async (req, res) => {
+  try {
+    const { username, email, role, password } = req.body;
+    const updateData = { username, email, role };
+
+    // Only hash/update password if provided
+    if (password) {
+      updateData.password = await bcrypt.hash(password, 10);
+    }
+
+    const user = await User.findByIdAndUpdate(
+      req.params.id,
+      updateData,
+      { new: true } // Return updated doc
+    );
+
+    if (!user) return res.status(404).json({ message: "User not found" });
+    res.json(user);
+  } catch (err) {
+    res.status(400).json({ message: err.message });
+  }
+};
+
+export const deleteUser = async (req, res) => {
+  try {
+    const user = await User.findByIdAndDelete(req.params.id);
+    if (!user) return res.status(404).json({ message: "User not found" });
+    res.json({ message: "User deleted successfully" });
+  } catch (err) {
+    res.status(500).json({ message: err.message });
+  }
+};

@@ -1,9 +1,9 @@
-import { 
-  register, login, 
+import {
+  register, login,
   getServers, addServer, updateServer, deleteServer,
   getMetrics, addMetrics,
   getAlerts, addAlert, updateAlert,
-  getUsers, getUserProfile 
+  getUsers, getUserProfile, updateUser, deleteUser
 } from "../Controller/todoController.js";
 
 import express from 'express';
@@ -32,6 +32,8 @@ route.put('/alerts/:id', updateAlert);
 // User routes
 route.get('/users', getUsers);
 route.get('/users/:id', getUserProfile);
+route.put('/users/:id', updateUser);
+route.delete('/users/:id', deleteUser);
 
 export default route;
 
